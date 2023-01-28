@@ -15,6 +15,7 @@ This project is to construct a RRM in the shape space from an output of GRRM pro
 This command computes the RRM of pentane in the shape space from the sample output files in the directory (pentane_Restruct) and output rrm_Re_pentane_AFIR.dot and rrm_Re_pentane_AFIR.png. For the detail of the dot format, refer to graphviz (https://graphviz.org/).
 
 ## Restrictions
+* Sample data of GRRM output is in the directory (pentane_Restruct). The files required are ***EQ_list.log, ***TS_list.log, and ***TSn.log
 * As is written in the paper, the code does not support RRMs with DC states and saddle connections. 
 * If the input molecule is too big, GAP program (generate_rrm_v9.g) may stop with error. In this case, consider to increase the available memory for GAP. For the detail, see the instruction of GAP (https://www.gap-system.org/)
 
