@@ -22,4 +22,4 @@ This command computes the RRM of pentane in the shape space from the sample outp
 ## Important Parameters
 * tolerance - Distance tolerance to consider sites as symmetrically equivalent in rrm_reconstruction_v12.py
   - default value is set to 0.3 (the same as the default value in pymatgen)
-  - it may happen that the assigned point group may depend on tol. The current algorithm output warning if the assigned point group is different from that assigned by GRRM program. 
+  - it may happen that the assigned point group may depend on tol. The current algorithm outputs warning if the assigned point group is different from that assigned by GRRM program. 
