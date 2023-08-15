@@ -241,7 +241,7 @@ for i in range(len(gconns)):
 
         s.append([x+1 for x in tran[0]])
 
-    G.add_edge(conni[0],conni[1],group=urt[i],org=org_ts[i],perms=[[conni[0],s[0]],[conni[1],s[1]]])
+    G.add_edge(conni[0],conni[1],ind=i,group=urt[i],org=org_ts[i],perms=[[conni[0],s[0]],[conni[1],s[1]]])
 
 print("connections computation finished!!!")
 
@@ -297,7 +297,8 @@ with open(fglist,mode='w') as f:
     f.write('];\n')
 
     f.write('ss:=[')
-    for e in G.edges(data=True):
+    sorted_edges = sorted(G.edges(data=True), key=lambda x: x[2]['ind'])
+    for e in sorted_edges:
         f.write('[['+str(e[2]['perms'][0][0]+1)+','+'PermList('+str(e[2]['perms'][0][1])+')],')
         f.write('['+str(e[2]['perms'][1][0]+1)+','+'PermList('+str(e[2]['perms'][1][1])+')]],')
     f.write('];\n')
