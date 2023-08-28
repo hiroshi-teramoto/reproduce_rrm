@@ -19,6 +19,7 @@ This command computes the RRM of pentane in the shape space from the sample outp
 * Sample data of GRRM output is in the directory (pentane_Restruct). The files required are ***EQ_list.log, ***TS_list.log, and ***TSn.log
 * As is written in the paper, the code does not support RRMs with DC states and saddle connections. 
 * If the input molecule is too big, GAP program (generate_rrm_v9.g) may stop with error. In this case, consider to increase the available memory for GAP. For the detail, see the instruction of GAP (https://www.gap-system.org/)
+* If the resulting RRM in shape space is too big, it may take a while for graphviz to visualize the graph. In that case, you might want to consider changing the options of the visualization or using other software to visualize.
 
 ## Important Parameters
 * tolerance - Distance tolerance to consider sites as symmetrically equivalent in rrm_reconstruction_v12.py
