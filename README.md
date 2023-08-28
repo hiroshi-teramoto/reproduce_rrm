@@ -13,7 +13,7 @@ This project is to construct a RRM in the shape space from an output of GRRM pro
 ## To run the code, download zip file and in the directory, type
 ./reproduce_rrm_demo.sh
 
-This command computes the RRM of pentane in the shape space from the sample output files in the directory (pentane_Restruct) and output rrm_Re_pentane_AFIR.dot and rrm_Re_pentane_AFIR.png. For the detail of the dot format, refer to graphviz (https://graphviz.org/).
+This command computes the RRM of pentane in the shape space from the sample output files in the directory (pentane_Restruct) and output rrm_Re_pentane_AFIR.dot and rrm_Re_pentane_AFIR.png. For the detail of the dot format, refer to graphviz (https://graphviz.org/). In the script file (reproduce_rrm_demo.sh), by setting vlabel = true, the vertex labels are included in the file rrm_Re_pentane_AFIR.dot. Each vertex label comprises the corresponding EQ number n (EQn in the input file *EQ_list.log) or n* if it is an inversion isomer of EQn, and the permutation occuring from the reference structure (EQn or EQn*). Similarly, by setting elabel = true, the edge labels are included in the file rrm_Re_pentane_AFIR.dot. Each edge label comprises the corresponding TS number n (TSn in the input file *TS_list.log) or n* if it is an inversion isomer of TSn, and the permutation occursing from the reference structures (TSn or TSn*).
 
 ## Restrictions
 * Sample data of GRRM output is in the directory (pentane_Restruct). The files required are ***EQ_list.log, ***TS_list.log, and ***TSn.log
