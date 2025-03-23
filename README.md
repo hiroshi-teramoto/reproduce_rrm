@@ -30,7 +30,8 @@ This command computes the RRM of Au5Ag in the shape space from the sample output
 
 ## Restrictions
 * Sample data of GRRM output is in the directory Metal. The files required are ***EQ_list.log, ***TS_list.log, and ***TSn.log
-* As is written in the paper, the code does not support RRMs with DC (Dissociation Channel) states and saddle connections. 
+* As is written in the paper, the code does not support RRMs with DC (Dissociation Channel) states and saddle connections.
+* The current version of the code only accept the connected RRMs (otherwise the assertion error (assert nx.is_connected(G)) occurs in rrm_reconstruction_v18.py.
 * If the input molecule is too big, GAP program (generate_rrm_v9.g) may stop with error. In this case, consider to increase the available memory for GAP. For the detail, see the instruction of GAP (https://www.gap-system.org/)
 * If the resulting RRM in shape space is too big, it may take a while for graphviz to visualize the graph. In that case, you might want to consider changing the options of the visualization or using other software to visualize.
 * If the output of GRRM contains reaction paths violating [Pechukas theorem](https://pubs.aip.org/aip/jcp/article-abstract/64/4/1516/786979/On-simple-saddle-points-of-a-potential-surface-the) and [its extention (Hiroshi Teramoto, Pontential Energy Function, symmetry and its consequences, Japanese)](https://www.jstc.org/frontier15/), the code outputs assertion errors. For example, in case of AuCu4 (in the sample directory), it outputs the following assertion error:
