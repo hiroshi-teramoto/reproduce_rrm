@@ -29,7 +29,7 @@ This command computes the RRM of Au5Ag in the shape space from the sample output
 * elabel = true or false, if it is set to true, the edge labels are included in the file rrm_Au5Ag_AFIR.dot. Each edge label comprises the corresponding TS number n (TSn in the input file \*TS_list.log) or n\* if it is an inversion isomer of TSn, and the permutation occursing from the reference structures (TSn or TSn*).
 
 ## Restrictions
-* Sample data of GRRM output is in the directory Metal. The files required are ***EQ_list.log, ***TS_list.log, and ***TSn.log
+* Sample data of GRRM output is in the directory Metal. The files required are `***EQ_list.log`, `***TS_list.log`, and `***TSn.log` (`n` is the indices of the transition states.).
 * As is written in the paper, the code does not support RRMs with DC (Dissociation Channel) states and saddle connections.
 * The current version of the code only accept the connected RRMs as inputs (otherwise the assertion error (assert nx.is_connected(G)) occurs in rrm_reconstruction_v18.py.
 * If the input molecule is too big, GAP program (generate_rrm_v9.g) may stop with error. In this case, consider to increase the available memory for GAP. For the detail, see the instruction of GAP (https://www.gap-system.org/)
@@ -73,8 +73,8 @@ This error message indicates that the output of GRRM contains a reaction path vi
 
 ## Using your own GRRM outputs
 * Create a directory with the name of your molecule (e.g. Au5Ag). In what follows, we suppose it is ${MOL}
-* Put all the output files of GRRM, ${MOL}_AFIR_EQ_list.log, ${MOL}_AFIR_TS_list.log, ${MOL}_AFIR_TSn.log (n is supposed to be the indices of the transition states.) under the directory.
-* Modify MOL=${MOL} in the reproduce_rrm_demo.sh
-* Run reproduce_rrm_demo.sh
+* Put all the output files of GRRM, `${MOL}_AFIR_EQ_list.log`, `${MOL}_AFIR_TS_list.log`, `${MOL}_AFIR_TSn.log` (`n` is supposed to be the indices of the transition states.) under the directory.
+* Modify `MOL=${MOL}` in the reproduce_rrm_demo.sh
+* Run `./reproduce_rrm_demo.sh`
 * Watch out warnings and errors. If Assertion error occurred, it indicates there is a bug in this code (in that case, kindly report the bug to us!) or there is a problem in your GRRM outputs (like the case AuCu4 mentioned above, we observed the violation of Pechukas theorem occurred in case if Vallay-Ridge transitions occur in the middle of a reaction path or other more primitive error.). This code can also used to verify your GRRM output.
 * If the code ran successfuly, it will output `rrm_${MOL}_AFIR.dot` and `rrm_${MOL}_AFIR.png` (and `data/${MOL}_AFIR.g` for an intermediate file). If the png figure is too complicated to show, consider extracting some features of the graph from the dot file. For example, we use persistent homology to extract some features of output graphs. 
