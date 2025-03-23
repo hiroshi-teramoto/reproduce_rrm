@@ -25,7 +25,7 @@ This command computes the RRM of Au5Ag in the shape space from the sample output
 * If the input molecule is too big, GAP program (generate_rrm_v9.g) may stop with error. In this case, consider to increase the available memory for GAP. For the detail, see the instruction of GAP (https://www.gap-system.org/)
 * If the resulting RRM in shape space is too big, it may take a while for graphviz to visualize the graph. In that case, you might want to consider changing the options of the visualization or using other software to visualize.
 * If the output of GRRM contains reaction paths violating [Pechukas theorem](https://pubs.aip.org/aip/jcp/article-abstract/64/4/1516/786979/On-simple-saddle-points-of-a-potential-surface-the) and [its extention (Hiroshi Teramoto, Pontential Energy Function, symmetry and its consequences, Japanese ](https://www.jstc.org/frontier15/), the code outputs assertion errors. For example, in case of AuCu4 (in the sample directory), its output assertion error 
-'''
+```
 Violation of Pechukus theorem:
 TS8:
 the reactant and product are permutation isomers
@@ -53,7 +53,7 @@ Group( [ (2,3)(4,5), (2,4)(3,5), (2,5)(3,4), () ] )
 U(r) (for transition state):
 Group( [ (2,3)(4,5), (2,4)(3,5), (2,5)(3,4), () ] )
 GAP computation done.
-'''
+```
 
 ## Important Parameters
 * tolerance - Distance tolerance to consider sites as symmetrically equivalent in rrm_reconstruction_v18.py
