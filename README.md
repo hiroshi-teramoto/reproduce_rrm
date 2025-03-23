@@ -37,11 +37,11 @@ the figure like: ![RRM of Au5Ag cluster](./rrm_Au5Ag_AFIR.png) Sometimes it may 
 ```
 the index of symc in sym : 1
 ```
-indicates that the resulting RRM in shape space is connected. In general, if the output contains the line
+indicates that the resulting RRM in shape space is connected. In general, if the output contains the line,
 ```
 the index of symc in sym : n
 ```
-, it indicates that the resulting RRM in shape space has `n` connected components (that are mutually graph-isomorphic with each other. See the paper and its supplimentary material for details.). If the latter is the case, this codes output one of the connected components.
+it indicates that the resulting RRM in shape space has `n` connected components (that are mutually graph-isomorphic with each other. See the paper and its supplimentary material for details.). If the latter is the case, this codes output one of the connected components.
 
 ## Constitution of the code
 * Core Python script `rrm_reconstruction_v18.py` that handles parsing GRRM output and preparing data
