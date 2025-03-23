@@ -1,7 +1,7 @@
 # reproduce_rrm
 This project is to construct a RRM in the shape space from an output of GRRM program. For the detail, refer to our paper (Hiroshi Teramoto et al., J. Chem. Theory Comput. 2023, 19, 17, 5886–5896), [Reproducing RRM on the Shape Space from its Quotient by CNPI group](https://pubs.acs.org/doi/full/10.1021/acs.jctc.3c00500) by Hiroshi Teramoto, Takuya Saito, Masamitsu Aoki, Burai Murayama, Masato Kobayashi, Takenobu Nakamura, and Tetsuya Taketsugu. In what follows, we denote this paper as "the paper". In Appendix of this paper, there exists a detailed description of this code.
 
-## To run the code, you need to install
+## To run the code, you need to install (Tested with Ubuntu 22.04.5 LTS)
 * GAP - Groups, Algorithms, Programming (https://www.gap-system.org/) (Tested with GAP 4.11 (or 4.13))
 * python code (rrm_reconstruction_v18.py) depends on 
   - pymatgen (Tested with 2024.8.9)
