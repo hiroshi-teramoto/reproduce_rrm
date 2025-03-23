@@ -4,17 +4,16 @@
 IS_POINT=true
 
 # Specify the directory name 
-MOL="pentane"
-DIR="${MOL}_Restruct"
-NAME="Re_${MOL}_AFIR"
+# MOL="Au5Ag"
+MOL="AuCu4"
+DIR="Metal/${MOL}/"
+NAME="${MOL}_AFIR"
 
-# output files
 VFILE="vertices_${NAME}.dat"
 EFILE="edges_${NAME}.dat"
-# resulting rrm in shape space in the dot format
 OFILE="rrm_${NAME}.dot"
-# png file in which the resulting rrm is visualized
 GFILE="rrm_${NAME}.png"
+CFILE="rrm_${NAME}.cli"
 
 # Specify the following log files 
 EQLIST="${DIR}/`ls ${DIR} | grep EQ_list.log`"
@@ -28,12 +27,12 @@ echo ${TSHEAD}
 # output file to feed it into GAP
 GLIST="data/${NAME}.g"
 
-python rrm_reconstruction_v12.py $EQLIST $TSLIST $TSHEAD $GLIST 
+python3 rrm_reconstruction_v18.py $EQLIST $TSLIST $TSHEAD $GLIST 
 
-/usr/local/gap-4.11.1/bin/gap.sh -b -q -m 12g generate_rrm_v9.g << EOI
+/usr/local/gap-4.13.0/gap -b -q -m 12g generate_rrm_v11.g << EOI
 Read("$GLIST");;
-vlabel:=false;;
-elabel:=false;;
+vlabel:=true;;
+elabel:=true;;
 
 Print("the index of symc in sym : ",IndexNC(sym,symc),"\n");
 generate_rrm("$VFILE","$EFILE",symc,ur,urt,ss,org_eq,org_ts,vlabel,elabel);
@@ -61,8 +60,7 @@ cat $EFILE >> $OFILE
 
 echo "}" >> $OFILE
 
-# use fdp if the resulting graph is too big
-# dot -Kdot -Tpng $OFILE -o $GFILE
 dot -Kfdp -Tpng $OFILE -o $GFILE
+python3 check_number_of_edges_v3.py $OFILE 
 
 echo "DONE"
