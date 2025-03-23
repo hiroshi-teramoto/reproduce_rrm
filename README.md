@@ -12,8 +12,8 @@ This project is to construct a RRM in the shape space from an output of GRRM pro
 
 ## To run the code, download zip file and in the directory
 * Edit the script reproduce_rrm_demo.sh
-  - The python command supposed to be "python3".
-  - The path for GAP is supposed to be "/usr/local/gap-4.13.0/gap". Modify the path to match your environment path. 
+  - The python command supposed to be python3.
+  - The path for GAP is supposed to be /usr/local/gap-4.13.0/gap. Modify the path to match your environment path. 
 * Type "./reproduce_rrm_demo.sh" and press the enter key.
 
 This command computes the RRM of Au5Ag in the shape space from the sample output files in the directory Metal/Au5Ag and output rrm_Au5Ag_AFIR.dot (graphviz dot file) and rrm_Re_Au5Ag_AFIR.png (graph figure). For the detail of the dot format, refer to graphviz (https://graphviz.org/). If the code ran correctly, you should see the figure like: ![RRM of Au5Ag cluster](./rrm_Au5Ag_AFIR.png) Sometimes it may be too complicated to visualize the resulting RRM in shape space. In that case, you should edit the corresponding dot file or extract some of the characteristics to quantify some of the graph properties.
