@@ -41,7 +41,7 @@ indicates that the resulting RRM in shape space is connected. In general, if the
 ```
 the index of symc in sym : n
 ```
-indicates that the resulting RRM in shape space has `n` connected components (that are mutually graph-isomorphic with each other. See the paper and its supplimentary material for details.).
+indicates that the resulting RRM in shape space has `n` connected components (that are mutually graph-isomorphic with each other. See the paper and its supplimentary material for details.). If the latter is the case, this codes output one of the connected components.
 
 ## Constitution of the code
 * Core Python script `rrm_reconstruction_v18.py` that handles parsing GRRM output and preparing data
