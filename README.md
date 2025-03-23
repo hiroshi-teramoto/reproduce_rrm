@@ -1,5 +1,5 @@
 # reproduce_rrm
-This project is to construct a Reaction Route Map (RRM) in the shape space from an output of Global Reaction Route Mapping (GRRM) program. GRRM finds reaction pathways but identifies CNPI isomers as one; this tool reconstructs the full reaction network in 3D shape space accounting for all permutations of identical atoms. This code also can be used to verify your GRRM outputs. For the detail, refer to our paper (Hiroshi Teramoto et al., J. Chem. Theory Comput. 2023, 19, 17, 5886–5896), [Reproducing RRM on the Shape Space from its Quotient by CNPI group](https://pubs.acs.org/doi/full/10.1021/acs.jctc.3c00500) by Hiroshi Teramoto, Takuya Saito, Masamitsu Aoki, Burai Murayama, Masato Kobayashi, Takenobu Nakamura, and Tetsuya Taketsugu. In what follows, we denote this paper as "the paper". In Appendix of this paper, there exists a detailed description of this code.
+This project is to construct a Reaction Route Map (RRM) in the shape space from an output of Global Reaction Route Mapping (GRRM) program. GRRM finds reaction pathways but identifies CNPI isomers as one; this tool reconstructs the full reaction network in the shape space accounting for all permutations of identical atoms. This code also can be used to verify your GRRM outputs. For the detail, refer to our paper (Hiroshi Teramoto et al., J. Chem. Theory Comput. 2023, 19, 17, 5886–5896), [Reproducing RRM on the Shape Space from its Quotient by CNPI group](https://pubs.acs.org/doi/full/10.1021/acs.jctc.3c00500) by Hiroshi Teramoto, Takuya Saito, Masamitsu Aoki, Burai Murayama, Masato Kobayashi, Takenobu Nakamura, and Tetsuya Taketsugu. In what follows, we denote this paper as "the paper". In Appendix of this paper, there exists a detailed description of this code.
 
 ## To run the code, you need to install (Tested with Ubuntu 22.04.5 LTS)
 * GAP - Groups, Algorithms, Programming (https://www.gap-system.org/) (Tested with GAP 4.11 (or 4.13))
@@ -37,11 +37,11 @@ the figure like: ![RRM of Au5Ag cluster](./rrm_Au5Ag_AFIR.png) Sometimes it may 
 ```
 the index of symc in sym : 1
 ```
-indicates that the resulting RRM in shape space is connected. In general, if the output is 
+indicates that the resulting RRM in shape space is connected. In general, if the output contains the line
 ```
 the index of symc in sym : n
 ```
-indicates that the resulting RRM in shape space has `n` connected components (that are mutually graph-isomorphic with each other. See the paper and its supplimentary material for details.). If the latter is the case, this codes output one of the connected components.
+, it indicates that the resulting RRM in shape space has `n` connected components (that are mutually graph-isomorphic with each other. See the paper and its supplimentary material for details.). If the latter is the case, this codes output one of the connected components.
 
 ## Constitution of the code
 * Core Python script `rrm_reconstruction_v18.py` that handles parsing GRRM output and preparing data
