@@ -54,6 +54,7 @@ U(r) (for transition state):
 Group( [ (2,3)(4,5), (2,4)(3,5), (2,5)(3,4), () ] )
 GAP computation done.
 ```
+This error message indicates that the output of GRRM contains a reaction path violating Pechukas theorem and its extention. For example, the above output indicates that the reaction paths emanating from TS8 and TS16 violating Pechukas theorem. If this error occurred, there is no guarantee that the output results are correct. If this happens, you should investigate carefully about your GRRM outputs.
 
 ## Important Parameters
 * tolerance - Distance tolerance to consider sites as symmetrically equivalent in rrm_reconstruction_v18.py
