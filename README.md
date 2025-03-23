@@ -7,7 +7,7 @@ This project is to construct a RRM in the shape space from an output of GRRM pro
   - pymatgen (Tested with 2024.8.9)
   - numpy (Tested with 1.26.4)
   - networkx (Tested with 3.3)
-  - some features (*-operator) for python 3.5 or later.
+  - some features (*-operator) for python 3.5 or later (Tested with 3.10.12).
 * graphviz (https://graphviz.org/) (Tested with 2.43.0 (0))
 
 ## To run the code, download zip file and in the directory
