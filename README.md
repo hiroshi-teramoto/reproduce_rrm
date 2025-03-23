@@ -3,7 +3,7 @@ This project is to construct a RRM in the shape space from an output of GRRM pro
 
 ## To run the code, you need to install
 * GAP - Groups, Algorithms, Programming (https://www.gap-system.org/)
-* python code (rrm_reconstruction_v12.py) depends on 
+* python code (rrm_reconstruction_v18.py) depends on 
   - pymatgen
   - numpy
   - networkx
