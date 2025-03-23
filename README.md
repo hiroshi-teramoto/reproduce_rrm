@@ -13,7 +13,7 @@ This project is to construct a RRM in the shape space from an output of GRRM pro
 ## To run the code, download zip file and in the directory, type
 ./reproduce_rrm_demo.sh
 
-This command computes the RRM of pentane in the shape space from the sample output files in the directory (pentane_Restruct) and output rrm_Re_pentane_AFIR.dot and rrm_Re_pentane_AFIR.png. For the detail of the dot format, refer to graphviz (https://graphviz.org/). 
+This command computes the RRM of Au5Ag in the shape space from the sample output files in the directory Metal/Au5Ag and output rrm_Au5Ag_AFIR.dot (graphviz dot file) and rrm_Re_pentane_AFIR.png (graph figure). For the detail of the dot format, refer to graphviz (https://graphviz.org/). 
 
 ## Options
 * vlabel = true or false, if it is set to true, the vertex labels are included in the file rrm_Re_pentane_AFIR.dot. Each vertex label comprises the corresponding EQ number n (EQn in the input file \*EQ_list.log) or n\* if it is an inversion isomer of EQn, and the permutation occuring from the reference structure (EQn or EQn*). 
@@ -26,6 +26,6 @@ This command computes the RRM of pentane in the shape space from the sample outp
 * If the resulting RRM in shape space is too big, it may take a while for graphviz to visualize the graph. In that case, you might want to consider changing the options of the visualization or using other software to visualize.
 
 ## Important Parameters
-* tolerance - Distance tolerance to consider sites as symmetrically equivalent in rrm_reconstruction_v12.py
+* tolerance - Distance tolerance to consider sites as symmetrically equivalent in rrm_reconstruction_v18.py
   - default value is set to 0.3 (the same as the default value in pymatgen)
   - it may happen that the assigned point group may depend on tol. The current algorithm outputs warning if the assigned point group is different from that assigned by GRRM program. 
