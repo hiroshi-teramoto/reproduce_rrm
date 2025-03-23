@@ -60,3 +60,5 @@ This error message indicates that the output of GRRM contains a reaction path vi
 * tolerance - Distance tolerance to consider sites as symmetrically equivalent in rrm_reconstruction_v18.py
   - default value is set to 0.3 (the same as the default value in pymatgen)
   - it may happen that the assigned point group may depend on tol. The current algorithm outputs warning if the assigned point group is different from that assigned by GRRM program. 
+
+## Using your own GRRM outputs
