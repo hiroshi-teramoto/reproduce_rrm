@@ -13,14 +13,14 @@ This project is to construct a RRM in the shape space from an output of GRRM pro
 ## To run the code, download zip file and in the directory, type
 ./reproduce_rrm_demo.sh
 
-This command computes the RRM of Au5Ag in the shape space from the sample output files in the directory Metal/Au5Ag and output rrm_Au5Ag_AFIR.dot (graphviz dot file) and rrm_Re_pentane_AFIR.png (graph figure). For the detail of the dot format, refer to graphviz (https://graphviz.org/). 
+This command computes the RRM of Au5Ag in the shape space from the sample output files in the directory Metal/Au5Ag and output rrm_Au5Ag_AFIR.dot (graphviz dot file) and rrm_Re_Au5Ag_AFIR.png (graph figure). For the detail of the dot format, refer to graphviz (https://graphviz.org/). 
 
 ## Options
-* vlabel = true or false, if it is set to true, the vertex labels are included in the file rrm_Re_pentane_AFIR.dot. Each vertex label comprises the corresponding EQ number n (EQn in the input file \*EQ_list.log) or n\* if it is an inversion isomer of EQn, and the permutation occuring from the reference structure (EQn or EQn*). 
-* elabel = true or false, if it is set to true, the edge labels are included in the file rrm_Re_pentane_AFIR.dot. Each edge label comprises the corresponding TS number n (TSn in the input file \*TS_list.log) or n\* if it is an inversion isomer of TSn, and the permutation occursing from the reference structures (TSn or TSn*).
+* vlabel = true or false, if it is set to true, the vertex labels are included in the file rrm_Au5Ag_AFIR.dot. Each vertex label comprises the corresponding EQ number n (EQn in the input file \*EQ_list.log) or n\* if it is an inversion isomer of EQn, and the permutation occuring from the reference structure (EQn or EQn*). 
+* elabel = true or false, if it is set to true, the edge labels are included in the file rrm_Au5Ag_AFIR.dot. Each edge label comprises the corresponding TS number n (TSn in the input file \*TS_list.log) or n\* if it is an inversion isomer of TSn, and the permutation occursing from the reference structures (TSn or TSn*).
 
 ## Restrictions
-* Sample data of GRRM output is in the directory (pentane_Restruct). The files required are ***EQ_list.log, ***TS_list.log, and ***TSn.log
+* Sample data of GRRM output is in the directory Metal. The files required are ***EQ_list.log, ***TS_list.log, and ***TSn.log
 * As is written in the paper, the code does not support RRMs with DC (Dissociation Channel) states and saddle connections. 
 * If the input molecule is too big, GAP program (generate_rrm_v9.g) may stop with error. In this case, consider to increase the available memory for GAP. For the detail, see the instruction of GAP (https://www.gap-system.org/)
 * If the resulting RRM in shape space is too big, it may take a while for graphviz to visualize the graph. In that case, you might want to consider changing the options of the visualization or using other software to visualize.
