@@ -99,7 +99,7 @@ This error message indicates that the output of GRRM contains a reaction path vi
 ## Using your own GRRM outputs
 * Create a directory with the name of your molecule (e.g. Au5Ag). In what follows, we suppose it is ${MOL}
 * Put all the output files of GRRM, `${MOL}_AFIR_EQ_list.log`, `${MOL}_AFIR_TS_list.log`, `${MOL}_AFIR_TSn.log` (`n` is supposed to be the indices of the transition states.) under the directory.
-* Modify `MOL=${MOL}` in the reproduce_rrm_demo.sh
+* Modify `MOL=${MOL}` in the `reproduce_rrm_demo.sh`.
 * Run `./reproduce_rrm_demo.sh`
 * Watch out warnings and errors. If Assertion error occurred, it indicates there is a bug in this code (in that case, kindly report the bug to us!) or there is a problem in your GRRM output (like the case AuCu4 mentioned above, we observed the violation of Pechukas theorem occurred in case if Vallay-Ridge transitions occur in the middle of a reaction path or other possibly more primitive error.). This code can also used to verify your GRRM output.
 * If the code ran successfuly, it will output `rrm_${MOL}_AFIR.dot` and `rrm_${MOL}_AFIR.png` (and `data/${MOL}_AFIR.g` for an intermediate file). If the png figure is too complicated to show, consider extracting some features of the graph from the dot file. For example, we use persistent homology to extract some features of output graphs. 
