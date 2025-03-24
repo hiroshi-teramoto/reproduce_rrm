@@ -94,8 +94,8 @@ If this occurs, the results are not guaranteed to be correct – you should care
 
 ## Important Parameters
 * tolerance - Distance tolerance to consider sites as symmetrically equivalent in rrm_reconstruction_v18.py
-  - default value is set to 0.3 (the same as the default value in pymatgen)
-  - it may happen that the assigned point group may depend on tol. The current algorithm outputs warning if the assigned point group is different from that assigned by GRRM program. 
+  - default value is set to `0.1`
+  - Note: the assigned point group can depend on the tolerance value. The algorithm will output a warning if the point group it finds differs from the one reported by the GRRM program.
 
 ## Using your own GRRM outputs
 * Create a directory with the name of your molecule (e.g. Au5Ag). In what follows, we suppose it is ${MOL}.
