@@ -57,9 +57,9 @@ it indicates that the resulting RRM in shape space has `n` connected components 
 * Sample data of GRRM output is in the directory Metal. The files required are `***EQ_list.log`, `***TS_list.log`, and `***TSn.log` (`n` is the indices of the transition states.).
 * As mentioned in the paper, the code does not support RRMs that include DC (dissociation channel) states or saddle connections.
 * The current version of the code only accept the connected RRMs as inputs (otherwise the assertion error `assert nx.is_connected(G)` occurs in rrm_reconstruction_v18.py.
-* If the input molecule is too big, GAP program `generate_rrm_v11.g` may stop with error. In this case, consider to increase the available memory for GAP. For the detail, see the instruction of GAP. For the detail, see the instruction of GAP (https://www.gap-system.org/)
-* If the resulting RRM in shape space is too big, it may take a while for graphviz to visualize the graph. In that case, you might want to consider changing the options of the visualization or using other software to visualize.
-* If the output of GRRM contains reaction paths violating [Pechukas theorem](https://pubs.aip.org/aip/jcp/article-abstract/64/4/1516/786979/On-simple-saddle-points-of-a-potential-surface-the) and [its extention (Hiroshi Teramoto, Pontential Energy Function, symmetry and its consequences, in Japanese)](https://www.jstc.org/frontier15/), the code outputs assertion errors. For example, in case of AuCu4 (in the sample directory), it outputs the following assertion error:
+* The GAP program may stop with an error if the input molecule is too large. In this case, consider increasing the memory available to GAP. For details, see the GAP documentation. (https://www.gap-system.org/)
+* If the resulting RRM in shape space is too big, it may take a while for Graphviz to visualize the graph. In that case, you might want to consider changing the options of the visualization or using other software to visualize.
+* If the output of GRRM contains reaction paths violating [Pechukas theorem](https://pubs.aip.org/aip/jcp/article-abstract/64/4/1516/786979/On-simple-saddle-points-of-a-potential-surface-the) and [its extension (Hiroshi Teramoto, Pontential Energy Function, symmetry and its consequences, in Japanese)](https://www.jstc.org/frontier15/), the code outputs assertion errors. For example, in case of AuCu4 (in the sample directory), it outputs the following assertion error:
 ```
 Violation of Pechukus theorem:
 TS8:
