@@ -50,8 +50,8 @@ it indicates that the resulting RRM in shape space has `n` connected components 
 * Shell script to tie it all together `reproduce_rrm_demo.sh`
 
 ## Options
-* `vlabel = true or false`, if it is set to true, the vertex labels are included in the file `rrm_Au5Ag_AFIR.dot`. Each vertex label comprises the corresponding EQ number n (EQn in the input file \*EQ_list.log) or n\* if it is an inversion isomer of EQn, and the permutation occuring from the reference structure (EQn or EQn*). 
-* `elabel = true or false`, if it is set to true, the edge labels are included in the file `rrm_Au5Ag_AFIR.dot`. Each edge label comprises the corresponding TS number n (TSn in the input file \*TS_list.log) or n\* if it is an inversion isomer of TSn, and the permutation occursing from the reference structures (TSn or TSn*).
+* `vlabel = true or false`, if it is set to true, the vertex labels are included in the file `rrm_Au5Ag_AFIR.dot`. Each vertex label comprises the corresponding EQ number n (EQn in the input file \*EQ_list.log) or n\* if it is an inversion isomer of EQn, and the permutation from the reference structure (EQn or EQn*). 
+* `elabel = true or false`, if it is set to true, the edge labels are included in the file `rrm_Au5Ag_AFIR.dot`. Each edge label comprises the corresponding TS number n (TSn in the input file \*TS_list.log) or n\* if it is an inversion isomer of TSn, and the permutation from the reference structures (TSn or TSn*).
 
 ## Restrictions
 * Sample data of GRRM output is in the directory Metal. The files required are `***EQ_list.log`, `***TS_list.log`, and `***TSn.log` (`n` is the indices of the transition states.).
