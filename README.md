@@ -95,7 +95,7 @@ U(r) (for transition state):
 Group( [ (2,3)(4,5), (2,4)(3,5), (2,5)(3,4), () ] )
 GAP computation done.
 ```
-If this occurs, the results are not guaranteed to be correct – you should carefully examine your GRRM output in such cases.
+This is expected for that dataset (it indicates a certain kind of symmetry issue in the reaction network). If this occurs, the results are not guaranteed to be correct – you should carefully examine your GRRM output in such cases.
 
 ## Important Parameters
 * tolerance - Distance tolerance to consider sites as symmetrically equivalent in rrm_reconstruction_v18.py
