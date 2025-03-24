@@ -103,4 +103,7 @@ If this occurs, the results are not guaranteed to be correct – you should care
 * Modify `MOL=${MOL}` in the `reproduce_rrm_demo.sh`.
 * Run `./reproduce_rrm_demo.sh`.
 * Watch out warnings and errors. If Assertion error occurred, it indicates there is a bug in this code (in that case, kindly report the bug to us!) or there is a problem in your GRRM output (like the case AuCu4 mentioned above, we observed the violation of Pechukas theorem occurred in case if Vallay-Ridge transitions occur in the middle of a reaction path or other possibly more primitive error.). This code can also used to verify your GRRM output.
-* If the code ran successfuly, it will output `rrm_${MOL}_AFIR.dot` and `rrm_${MOL}_AFIR.png` (and `data/${MOL}_AFIR.g` for an intermediate file). If the png figure is too complicated to show, consider extracting some features of the graph from the Graphviz DOT file. For example, we use persistent homology to extract some features of output graphs. 
+* If the code ran successfuly, it will output `rrm_${MOL}_AFIR.dot` and `rrm_${MOL}_AFIR.png` (and `data/${MOL}_AFIR.g` for an intermediate file). If the png figure is too complicated to show, consider extracting some features of the graph from the Graphviz DOT file. For example, we use persistent homology to extract some features of output graphs.
+
+## How to Cite: 
+If you use this code, please cite the following publication: Hiroshi Teramoto et al., J. Chem. Theory Comput. 2023, 19, 17, 5886–5896.
