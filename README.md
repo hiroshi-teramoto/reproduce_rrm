@@ -3,7 +3,7 @@ This project is to construct a Reaction Route Map (RRM) in the shape space from 
 
 ## To run the code, you need to install (Tested with Ubuntu 22.04.5 LTS)
 * GAP - Groups, Algorithms, Programming (https://www.gap-system.org/) (Tested with GAP 4.11 (or 4.13))
-* python code (rrm_reconstruction_v18.py) depends on 
+* The Python script `rrm_reconstruction_v18.py` depends on the following packages:
   - pymatgen (Tested with 2024.8.9)
   - numpy (Tested with 1.26.4)
   - networkx (Tested with 3.3)
