@@ -16,7 +16,7 @@ This project is to construct a Reaction Route Map (RRM) in the shape space from 
   - The path for GAP is supposed to be `/usr/local/gap-4.13.0/gap`. Modify the path to match your environment path. 
 * Type `./reproduce_rrm_demo.sh` and press the enter key.
 
-This command computes the RRM of Au5Ag in the shape space from the sample output files in the directory `Metal/Au5Ag` and output `rrm_Au5Ag_AFIR.dot` (graphviz dot file) and `rrm_Au5Ag_AFIR.png` (graph figure). For the detail of the dot format, refer to graphviz (https://graphviz.org/). If the code ran correctly, you should see the output messages like
+This command computes the RRM of Au5Ag in the shape space from the sample output files in the directory `Metal/Au5Ag` and output `rrm_Au5Ag_AFIR.dot` (a Graphviz DOT file) and `rrm_Au5Ag_AFIR.png` (the rendered graph image). For the detail of the dot format, refer to graphviz (https://graphviz.org/). If the code ran correctly, you should see the output messages like
 ```
 Metal/Au5Ag//Au5Ag_AFIR_EQ_list.log
 Metal/Au5Ag//Au5Ag_AFIR_TS_list.log
