@@ -59,7 +59,8 @@ it indicates that the resulting RRM in shape space has `n` connected components 
 * The current version of the code only accept the connected RRMs as inputs (otherwise the assertion error `assert nx.is_connected(G)` occurs in rrm_reconstruction_v18.py.
 * The GAP program may stop with an error if the input molecule is too large. In this case, consider increasing the memory available to GAP. For details, see the GAP documentation. (https://www.gap-system.org/)
 * If the resulting RRM in shape space is too big, it may take a while for Graphviz to visualize the graph. In that case, you might want to consider changing the options of the visualization or using other software to visualize.
-* If the output of GRRM contains reaction paths violating [Pechukas theorem](https://pubs.aip.org/aip/jcp/article-abstract/64/4/1516/786979/On-simple-saddle-points-of-a-potential-surface-the) and [its extension (Hiroshi Teramoto, Pontential Energy Function, symmetry and its consequences, in Japanese)](https://www.jstc.org/frontier15/), the code outputs assertion errors. For example, in case of AuCu4 (in the sample directory), it outputs the following assertion error:
+* If the GRRM output contains reaction paths that violate [Pechukas's theorem](https://pubs.aip.org/aip/jcp/article-abstract/64/4/1516/786979/On-simple-saddle-points-of-a-potential-surface-the) (and [its extension (Hiroshi Teramoto, Pontential Energy Function, symmetry and its consequences, in Japanese)](https://www.jstc.org/frontier15/)), the code will throw an assertion error. For example, in the provided AuCu4 sample, TS8 and TS16 produce such errors​:
+
 ```
 Violation of Pechukus theorem:
 TS8:
@@ -89,7 +90,7 @@ U(r) (for transition state):
 Group( [ (2,3)(4,5), (2,4)(3,5), (2,5)(3,4), () ] )
 GAP computation done.
 ```
-This error message indicates that the output of GRRM contains a reaction path violating Pechukas theorem and its extention. For example, the above output indicates that the reaction paths emanating from TS8 and TS16 violating Pechukas theorem. If this error occurred, there is no guarantee that the output results are correct. If this happens, you should investigate carefully about your GRRM outputs.
+If this occurs, the results are not guaranteed to be correct – you should carefully examine your GRRM output in such cases.
 
 ## Important Parameters
 * tolerance - Distance tolerance to consider sites as symmetrically equivalent in rrm_reconstruction_v18.py
