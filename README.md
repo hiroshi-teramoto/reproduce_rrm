@@ -49,8 +49,10 @@ it indicates that the resulting RRM in shape space has `n` connected components 
 * Helper Python script for validation `check_number_of_edges_v3.py`
 * Shell script to tie it all together `reproduce_rrm_demo.sh`
 
-## Workflow
-1. Run the Python preprocessing: python3 rrm_reconstruction_v18.py <EQ_list.log> <TS_list.log> <TS_file_prefix> <output.g> – this generates a GAP script with symmetry information (stored as data/<output.g>).
+## Advanced Usage
+1. Run the Python preprocessing: python3 rrm_reconstruction_v18.py <EQ_list.log> <TS_list.log> <TS_file_prefix> <output.g> – this generates a GAP script with symmetry information (stored as <output.g>).
+2. Run GAP on the generated script to compute the RRM graph data: gap -b -q -m 12g generate_rrm_v11.g (with the appropriate memory flag). This will produce vertices_*.dat and edges_*.dat files.
+3. Combine the output into a Graphviz file and render it: The demo script automates this using cat and calling dot. If doing manually, you would take the contents of the .dat files and format them into a DOT file (see the script for the exact steps) and then run Graphviz’s dot -Tpng to get an image.
 
 ## Options
 * `vlabel = true or false`, if it is set to true, the vertex labels are included in the file `rrm_Au5Ag_AFIR.dot`. Each vertex label comprises the corresponding EQ number n (EQn in the input file \*EQ_list.log) or n\* if it is an inversion isomer of EQn, and the permutation from the reference structure (EQn or EQn*). 
