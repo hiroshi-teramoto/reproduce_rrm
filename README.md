@@ -11,8 +11,8 @@ This project is to construct a Reaction Route Map (RRM) in the shape space from 
 * Graphviz (https://graphviz.org/) (Tested with 2.43.0 (0))
 
 ## To run the code, download zip file and in the directory
-* Edit the script reproduce_rrm_demo.sh
-  - The python command supposed to be `python3`. If that is not the case, modify the command appropriately.
+* Edit the script `reproduce_rrm_demo.sh`
+  - The Python command supposed to be `python3`. If that is not the case, modify the command appropriately.
   - The path for GAP is supposed to be `/usr/local/gap-4.13.0/gap`. Modify the path to match your environment path. 
 * Type `./reproduce_rrm_demo.sh` and press the enter key.
 
