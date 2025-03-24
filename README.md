@@ -16,7 +16,7 @@ This project is to construct a Reaction Route Map (RRM) in the shape space from 
   - The path for GAP is supposed to be `/usr/local/gap-4.13.0/gap`. Modify the path to match your environment path. 
 * Type `./reproduce_rrm_demo.sh` and press the enter key.
 
-This command computes the RRM of Au5Ag in the shape space from the sample output files in the directory `Metal/Au5Ag` and outputs `rrm_Au5Ag_AFIR.dot` (a Graphviz DOT file) and `rrm_Au5Ag_AFIR.png` (the rendered graph image). For the detail of the dot format, refer to graphviz (https://graphviz.org/). If the code ran correctly, you should see the output messages like
+This command computes the RRM of Au5Ag in the shape space from the sample output files in the directory `Metal/Au5Ag` and outputs `rrm_Au5Ag_AFIR.dot` (a Graphviz DOT file) and `rrm_Au5Ag_AFIR.png` (the rendered graph image). For the detail of the Graphviz DOT format, refer to graphviz (https://graphviz.org/). If the code ran correctly, you should see the output messages like
 ```
 Metal/Au5Ag//Au5Ag_AFIR_EQ_list.log
 Metal/Au5Ag//Au5Ag_AFIR_TS_list.log
@@ -33,7 +33,7 @@ GAP computation done.
 All vertices with the same number have consistent degrees.
 DONE
 ```
-the figure like: ![RRM of Au5Ag cluster](./rrm_Au5Ag_AFIR.png) Sometimes it may be too complicated to visualize the resulting RRM in shape space. In that case, you should edit the corresponding dot file or extract some of the characteristics to quantify some of the graph properties. The line
+the figure like: ![RRM of Au5Ag cluster](./rrm_Au5Ag_AFIR.png) Sometimes it may be too complicated to visualize the resulting RRM in shape space. In that case, you should edit the corresponding Graphviz DOT file or extract some of the characteristics to quantify some of the graph properties. The line
 ```
 the index of symc in sym : 1
 ```
@@ -103,4 +103,4 @@ If this occurs, the results are not guaranteed to be correct – you should care
 * Modify `MOL=${MOL}` in the `reproduce_rrm_demo.sh`.
 * Run `./reproduce_rrm_demo.sh`.
 * Watch out warnings and errors. If Assertion error occurred, it indicates there is a bug in this code (in that case, kindly report the bug to us!) or there is a problem in your GRRM output (like the case AuCu4 mentioned above, we observed the violation of Pechukas theorem occurred in case if Vallay-Ridge transitions occur in the middle of a reaction path or other possibly more primitive error.). This code can also used to verify your GRRM output.
-* If the code ran successfuly, it will output `rrm_${MOL}_AFIR.dot` and `rrm_${MOL}_AFIR.png` (and `data/${MOL}_AFIR.g` for an intermediate file). If the png figure is too complicated to show, consider extracting some features of the graph from the dot file. For example, we use persistent homology to extract some features of output graphs. 
+* If the code ran successfuly, it will output `rrm_${MOL}_AFIR.dot` and `rrm_${MOL}_AFIR.png` (and `data/${MOL}_AFIR.g` for an intermediate file). If the png figure is too complicated to show, consider extracting some features of the graph from the Graphviz DOT file. For example, we use persistent homology to extract some features of output graphs. 
