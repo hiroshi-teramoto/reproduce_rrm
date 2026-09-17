@@ -58,6 +58,58 @@ it indicates that the resulting RRM in shape space has `n` connected components 
 * `vlabel = true or false`, if it is set to true, the vertex labels are included in the file `rrm_Au5Ag_AFIR.dot`. Each vertex label comprises the corresponding EQ number n (EQn in the input file \*EQ_list.log) or n\* if it is an inversion isomer of EQn, and the permutation from the reference structure (EQn or EQn*). 
 * `elabel = true or false`, if it is set to true, the edge labels are included in the file `rrm_Au5Ag_AFIR.dot`. Each edge label comprises the corresponding TS number n (TSn in the input file \*TS_list.log) or n\* if it is an inversion isomer of TSn, and the permutation from the reference structures (TSn or TSn*).
 
+## Optional faster sequential generation
+
+`generate_rrm_v11_fast.g` provides the same `generate_rrm` arguments and label
+defaults as v11. It indexes canonical cosets for vertex lookup, reuses the
+transversals in the Pechukas check, and writes vertices and edges through open
+streams. Vertex numbering, edge order, labels and multiplicities are preserved.
+Pechukas violations produce the existing diagnostics and continue as in v11;
+such output still needs the examination described under Limitations.
+
+After the Python preprocessing step, use it from the repository directory:
+
+```bash
+gap -b -q -r -m 512m <<'GAP'
+Read("generate_rrm_v11_fast.g");
+Read("data/Au5Ag_AFIR.g");
+generate_rrm("vertices_Au5Ag_AFIR.dat", "edges_Au5Ag_AFIR.dat",
+             symc, ur, urt, ss, org_eq, org_ts, true, true);
+QUIT;
+GAP
+```
+
+Set `-m` to an initial workspace suitable for your input. To use this option in
+the demo, change its GAP script argument to `generate_rrm_v11_fast.g`.
+
+The regression suite compares both dat files byte for byte against v11, including
+all seven forms of the optional label arguments, inversion isomers, self-loops,
+multiple edges, zero transition states and AuCu4's Pechukas diagnostics. It needs
+GAP and Python 3.8+ (standard library only):
+
+```bash
+python3 tests/test_generate_rrm_v11_fast.py --gap /path/to/gap --benchmark
+```
+
+Add `--input /path/to/preprocessed.g` to check another input. The optional benchmark
+reports the median wall time of three fresh processes per implementation for
+Au5Ag and a synthetic scaling fixture; every timed output is also compared with
+v11. Logs and generated files are kept in a new directory under `/tmp`.
+See [validation and measurements](docs/results/sequential-speedup.md).
+
+For atom-count scaling with eight EQs and 30 TSs fixed, run:
+
+```bash
+python3 tests/benchmark_rrm_scaling.py --gap /path/to/gap
+```
+
+This extends the synthetic fixture to 6, 7 and 8 identical atoms plus one
+distinct atom (7, 8 and 9 atoms total), keeping its stabilizers and endpoint
+permutations fixed. Each completed output is checked against earlier completed
+runs. A process exceeding 300 seconds is recorded as a timeout and its remaining
+repetitions are skipped; use `--timeout` to change that limit. The report states
+whether a completed v11 reference was available for each input.
+
 ## Limitations
 * Sample data of GRRM output is in the directory Metal. The files required are `***EQ_list.log`, `***TS_list.log`, and `***TSn.log` (`n` is the indices of the transition states.).
 * As mentioned in the paper, the code does not support RRMs that include DC (dissociation channel) states or saddle connections.
