@@ -43,13 +43,24 @@ def perm(list1,list2):
 
     return plist
 
-# judge whether the set of SymmOps sop contains a volume-inversion operation.
 # returns true if the molecule is chiral
-def wchiral(sop):
+def wchiral(sop, point_group):
+    # pymatgen omits the mirror planes from the C*v symmetry operations.
+    if point_group == 'C*v':
+        return False
     for sp in sop:
        if np.linalg.det(sp.rotation_matrix) < 0:
            return False
     return True
+
+# Atom permutations realizable by proper rotations (used for both EQ and TS).
+def rotation_permutations(mol, sop, point_group):
+    # A mirror plane containing a linear molecule fixes every atom. Composing
+    # it with an improper operation gives the same permutation by a rotation.
+    # Include inversion for D*h: pymatgen omits the equivalent C2 rotations.
+    linear = point_group in ('C*v', 'D*h')
+    return [[i+1 for i in perm(mol.cart_coords, sp.operate_multi(mol.cart_coords))]
+            for sp in sop if linear or np.linalg.det(sp.rotation_matrix) > 0]
 
 # apply inversion to the molecule mol
 def invmol(mol):
@@ -183,7 +194,7 @@ org_eq = list(range(neq))
 for ind, mol in enumerate(moleq):
     molsym = PointGroupAnalyzer(mol,tolerance=tol)
     sop = molsym.get_symmetry_operations()
-    wchiral_sop = wchiral(sop)
+    wchiral_sop = wchiral(sop, molsym.sch_symbol)
     if ind < neq and wchiral_sop:
         moleq.append(invmol(mol))
         inv.append(len(moleq)-1)
@@ -204,11 +215,8 @@ for ind, mol in enumerate(moleq):
 
         sinv.append(ip);
 
-    gp = 'Group(['
-    for sp in sop:
-        if np.linalg.det(sp.rotation_matrix) > 0:
-            gp = gp + 'PermList('+str([i+1 for i in perm(mol.cart_coords,sp.operate_multi(mol.cart_coords))])+'),'
-    gp = gp + '])'
+    gp = 'Group([' + ','.join('PermList('+str(p)+')' for p in
+                             rotation_permutations(mol, sop, molsym.sch_symbol)) + '])'
     G.add_node(ind,group=gp,org_eq=org_eq[ind])
 
 print("ur computation finished!!!")
@@ -222,25 +230,14 @@ for ind, mol in enumerate(molts):
     molsym = PointGroupAnalyzer(mol,tolerance=tol)
     sop = molsym.get_symmetry_operations()
 
-    if ind < nts and (wchiral(sop) or weqchiral[gconns[ind][0]] == 'true' or weqchiral[gconns[ind][1]] == 'true'):
+    if ind < nts and (wchiral(sop, molsym.sch_symbol) or weqchiral[gconns[ind][0]] == 'true' or weqchiral[gconns[ind][1]] == 'true'):
         molts.append(invmol(mol))
         molrp.append([invmol(molrp[ind][0]),invmol(molrp[ind][1])])
         gconns.append(gconns[ind])
         org_ts.append(ind)
 
-    gp = 'Group(['
-    for sp in sop:
-        if np.linalg.det(sp.rotation_matrix) > 0:
-            # smol = mol.copy()
-            # smol.apply_operation(sp)
-            #smol = smol.get_centered_molecule()
-
-            # debug
-            # print(mol.cart_coords)
-            # print(smol.cart_coords)
-            gp = gp + 'PermList('+str([i+1 for i in perm(mol.cart_coords,sp.operate_multi(mol.cart_coords))])+'),'
-            # gp = gp + 'PermList('+str([i+1 for i in perm(mol.cart_coords,smol.cart_coords)])+'),'
-    gp = gp + '])'
+    gp = 'Group([' + ','.join('PermList('+str(p)+')' for p in
+                             rotation_permutations(mol, sop, molsym.sch_symbol)) + '])'
     urt.append(gp)
 
 print("urt computation finished!!!")

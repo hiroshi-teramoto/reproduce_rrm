@@ -110,5 +110,67 @@ This is expected for that dataset (it indicates a certain kind of symmetry issue
 * Watch out warnings and errors. If Assertion error occurred, it indicates there is a bug in this code (in that case, kindly report the bug to us!) or there is a problem in your GRRM output (like the case AuCu4 mentioned above, we observed the violation of Pechukas theorem occurred in case if Vallay-Ridge transitions occur in the middle of a reaction path or other possibly more primitive error.). This code can also used to verify your GRRM output.
 * If the code ran successfuly, it will output `rrm_${MOL}_AFIR.dot` and `rrm_${MOL}_AFIR.png` (and `data/${MOL}_AFIR.g` for an intermediate file). If the png figure is too complicated to show, consider extracting some features of the graph from the Graphviz DOT file. For example, we use persistent homology to extract some features of output graphs.
 
+### Linear-molecule chirality in preprocessing
+
+`rrm_reconstruction_v18.py` treats `C*v` (C-infinity-v) structures as achiral
+for both EQ and TS. The finite symmetry-operation list returned by pymatgen
+can omit their mirror planes; checking operation determinants alone would
+then add spurious inverted EQ/TS copies. This can disconnect the preprocessed
+graph or inflate the generated vertex/edge counts, including for molecules
+with repeated elements.
+
+For both linear point groups (`C*v` and `D*h`), `ur` and `urt` include the
+permutations from all returned operations. On a linear molecule, an improper
+operation permutes atoms like a proper rotation: composing it with a mirror
+plane containing the molecular axis leaves every atom's image unchanged.
+This restores the terminal-atom exchange of `D*h` structures such as OCO,
+whose returned operations can contain only identity and inversion. Nonlinear
+structures still use only operations with positive determinant.
+
+Run `python3 tests/test_chirality.py` in the preprocessing environment
+(with NumPy and pymatgen). It checks linear molecules with and without
+repeated elements, bent achiral structures, and a chiral control. It also
+checks the OCO endpoint exchange and the 12 proper permutations of methane.
+
+### Extracting the largest connected component
+
+For disconnected original GRRM inputs, `extract_largest_component.py` selects
+the unique largest EQ/TS component by EQ count. It requires Python >= 3.8 and
+uses only the standard library. Pass the source filename prefix:
+
+```sh
+python3 extract_largest_component.py /path/Pt5_AFIR --out /path/CNPI/largest_component
+```
+
+The output directory contains `EQ_list.log`, `TS_list.log`, `TS0.log`, etc.,
+and `mapping.json`. EQ and TS IDs are independently renumbered from zero in
+ascending original-ID order. All internal TS edges, including loops and
+parallel edges, are retained. Individual TS log contents are copied byte for
+byte under their new filenames; source logs are preserved.
+`mapping.json` records `eq_new_to_old` and `ts_new_to_old` objects (new number
+keys to original numbers), input/output counts, and excluded component IDs
+and counts.
+
+An existing output path, a tie for largest component, malformed/DC/unknown
+connections, duplicate EQ/TS IDs, or a missing/empty retained TS log causes
+the command to fail. If writing fails after the output directory was created,
+that directory is removed. Parent directories created by `--out` may remain
+after a failure; cleanup does not remove potentially shared parent paths.
+Run the existing preprocessor on the extracted files:
+
+```sh
+cd /path/CNPI
+python3 /path/to/reproduce_rrm/rrm_reconstruction_v18.py largest_component/EQ_list.log largest_component/TS_list.log largest_component/TS input.g
+```
+
+This writes `input.g` and places `GRRM_graph.dot` in `/path/CNPI`. Extraction
+selects a component of the original input; the preprocessor still checks
+connectivity after handling chirality.
+
+Run the standalone checks with `python3 tests/test_extract_largest_component.py`.
+
+See [preprocessing validation](docs/results/preprocessing-20260925.md)
+for the Pt5 extraction check and the corrected linear-symmetry CNPI outputs.
+
 ## How to Cite: 
 If you use this code, please cite the following publication: Hiroshi Teramoto et al., J. Chem. Theory Comput. 2023, 19, 17, 5886–5896.
